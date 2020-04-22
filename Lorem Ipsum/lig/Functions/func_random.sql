@@ -8,5 +8,5 @@ BEGIN
 
    SELECT @result = CAST(r.rnd * (@high - @low + 1) AS INT) + @low FROM dbo.view_random r
 
-	RETURN @result
+   RETURN @result
 END
