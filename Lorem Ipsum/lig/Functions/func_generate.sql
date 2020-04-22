@@ -3,6 +3,9 @@
    It can generate a randmon number of paragraphs, each with a randmon number of words.
    It can also include <p> tags, or CR between paragraphs.
 
+   It will create sentences (start with capital letter, end with full stop), and also
+   add the occasional comma.
+
    To use:-
 
    UPDATE myTable SET myColumn = loremIpsum.lig.func_generate(1, 3, 50, 100, 1) WHERE myColumn IS NULL OR myColumn = ''
@@ -74,7 +77,7 @@ BEGIN
             ELSE BEGIN
                SELECT @rnd = lig.func_random(0, 10)
 
-               IF @sentence < 5 OR @punctCount > 0 OR @rnd > 0.3 
+               IF @sentence < 5 OR @punctCount > 0 OR @rnd > 3
                   SELECT @text = @text + ' ', @punctCount = @punctCount - 1
                ELSE
                   SELECT @text = @text + ', ', @punctCount = lig.func_random(4, 12)
